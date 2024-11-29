@@ -1,0 +1,6 @@
+services:
+  app:
+    build:
+      context: .
+    environment:
+      - MODEL_URL=https://storage.googleapis.com/submissionmlgc-arf-36/submissions-model/model.json

@@ -6,17 +6,19 @@ async function handlePrediction(request, h) {
   const { image } = request.payload;
   const { model } = request.server.app;
 
-  const { predictionScore, result, suggestion } = await classifyImage(model, image);
+  // Convert stream to buffer
+  const imageBuffer = await new Promise((resolve, reject) => {
+    const chunks = [];
+    image.on('data', (chunk) => chunks.push(chunk));
+    image.on('end', () => resolve(Buffer.concat(chunks)));
+    image.on('error', (err) => reject(err));
+  });
+
+  const { result, suggestion } = await classifyImage(model, imageBuffer);
   const id = crypto.randomUUID();
   const createdAt = new Date().toISOString();
 
-  const data = {
-    id,
-    result,
-    suggestion,
-    // predictionScore, not used
-    createdAt,
-  };
+  const data = { id, result, suggestion, createdAt };
 
   await savePrediction(id, data);
   return h.response({
