@@ -132,4 +132,3 @@ dist
 #credentials
 service-account-key.json
 package-lock.json
-docker-compose

@@ -1,6 +1,0 @@
-services:
-  app:
-    build:
-      context: .
-    environment:
-      - MODEL_URL=#define model url here from cloud storage

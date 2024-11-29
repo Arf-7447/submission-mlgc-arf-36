@@ -1,17 +1,11 @@
-FROM node:20
-
+# Dockerfile
+FROM node:latest
 WORKDIR /app
-
 COPY package*.json ./
-
-RUN apt-get update && \
-    apt-get install -y python3 build-essential && \
-    npm install && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
+RUN npm install
+ENV PORT 8080
+# Change this URL bellow with your model URL
+ENV MODEL_URL        
 COPY . .
-
 EXPOSE 8080
-
-CMD ["npm", "start"]
+CMD [ "npm", "run", "start"]
