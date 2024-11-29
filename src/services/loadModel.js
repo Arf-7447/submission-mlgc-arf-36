@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 async function loadModel() {
-  const modelUrl = process.env.MODEL_URL || 'https://storage.googleapis.com/submissionmlgc-arf-36/submissions-model/model.json';
+  const modelUrl = process.env.MODEL_URL || '' ;  //Change this to your model URL if process.env.MODEL_URL is undefined
 
   try {
     const model = await tf.loadGraphModel(modelUrl);
