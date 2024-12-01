@@ -28,14 +28,35 @@ sudo rm -rf /var/lib/apt/lists/*
 ### 3. Configure Environment Variables
 Set up your `.env` file according to your project requirements. Example:
 ```env
-APP_ENV=production
-DATABASE_URL=sqlite:///db.sqlite
-SECRET_KEY=your_secret_key
+PORT= #defines the port
+MODEL_URL= #defines the model bucket url. example https://storage.googleapis.com/your_bucket/your_folder/model.json
+PROJECT_ID= #defines the project_id example your_project_id
+GOOGLE_APPLICATION_CREDENTIALS=./service-account-key.json #defines the service account key, and add the file on the root
+```
+### 3. Configure Environment Variables (Dockerfile)
+Set up your `Dockerfile` file according to your project requirements. Example:
+```Dockerfile
+# Dockerfile
+FROM node:   # Change this to your desired Node.js version (e.g., 14, 16, 18, latest)
+WORKDIR /app
+ENV PORT 8080
+EXPOSE 8080
+COPY . .
+RUN npm install
+# Change this URL bellow with your model URL
+ENV MODEL_URL        
+CMD [ "npm", "run", "start"]
 ```
 
 ### 4. Deploy
 After completing the setup, proceed with deployment as per your deployment guidelines.
-
+```Set up your :
+    - Firestore (Native)
+    - Cloud Storage (For upload your machine learning model)
+    - Deploy using cloud run :
+        | gcloud builds submit -t asia-southeast2-docker.pkg.dev/project-id/artifact-registry-repo/backend:latest .
+        | gcloud run deploy --image=asia-southeast2-docker.pkg.dev/project-id/artifact-registry-repo/backend:latest --region=asia-southeast2
+```
 ---
 
 ## 🛠 Prerequisites

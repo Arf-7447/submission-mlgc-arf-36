@@ -132,3 +132,4 @@ dist
 #credentials
 service-account-key.json
 package-lock.json
+requirements.json

@@ -1,15 +1,10 @@
 # Dockerfile
-FROM node:latest
+FROM node:   # Change this to your desired Node.js version (e.g., 14, 16, 18, latest)
 WORKDIR /app
-COPY package*.json ./
-RUN sudo apt-get update && \
-sudo apt-get install -y python3 build-essential && \
-npm install && \
-sudo apt-get clean && \
-sudo rm -rf /var/lib/apt/lists/*
 ENV PORT 8080
+EXPOSE 8080
+COPY . .
+RUN npm install
 # Change this URL bellow with your model URL
 ENV MODEL_URL        
-COPY . .
-EXPOSE 8080
 CMD [ "npm", "run", "start"]
