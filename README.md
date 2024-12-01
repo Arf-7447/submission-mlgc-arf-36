@@ -68,11 +68,23 @@ After completing the setup, proceed with deployment as per your deployment guide
 ## 📂 Repository Structure
 ```
 submission-mlgc-arf-36/
-├── src/              # Source code files
-├── .env.example      # Example environment configuration
-├── package.json      # Node.js dependencies
-├── README.md         # Project documentation
-└── ...
+src
+├── errors
+│   ├── ClientError.js
+│   └── InputError.js
+├── server
+│   ├── controller.js
+│   ├── routes.js
+│   └── server.js
+├── services
+│   ├── dataService.js
+│   ├── loadModel.js
+│   └── predictionService.js
+.env.example
+.gitignore
+Dockerfile
+package.json
+README.md
 ```
 
 ---
