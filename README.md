@@ -1,4 +1,3 @@
-```markdown
 # Submission MLGC ARF-36
 
 Welcome to the **Submission MLGC ARF-36** repository. Follow the instructions below to set up and deploy this project.
