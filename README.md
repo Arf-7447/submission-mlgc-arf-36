@@ -50,8 +50,9 @@ CMD [ "npm", "run", "start"]
 ### 4. Deploy
 After completing the setup, proceed with deployment as per your deployment guidelines.
 ```Set up your :
+    - Create Artifact Registry Repo
     - Firestore (Native)
-    - Cloud Storage (For upload your machine learning model)
+    - Cloud Storage (For upload your machine learning model to your bucket)
     - Deploy using cloud run :
         | gcloud builds submit -t asia-southeast2-docker.pkg.dev/project-id/artifact-registry-repo/backend:latest .
         | gcloud run deploy --image=asia-southeast2-docker.pkg.dev/project-id/artifact-registry-repo/backend:latest --region=asia-southeast2
